@@ -1,0 +1,325 @@
+/* Import Google Font - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+/* Estilo general de la página */
+
+body{
+  background: #a98edf;
+}
+/* Establece el color de fondo de la página */
+
+.popup{
+    margin: 50px; /* Espacio entre el pop-up y la página como tal */
+    display: grid; /* Organiza los elementos en filas y columnas */
+    gap: 25px; /* Espacio entre los elementos del pop-up */
+    grid-template-columns: repeat(auto-fill, 265px); /* Especifica que el contenido se organiza en columnas con un ancho de 265 pixeles y se ajustan de manera automática para llenar el contenedor */
+  }
+/* Describe todo el contenido dentro del formulario, después de darle click al ícono de + */
+
+  .uil {
+    font-family: 'Unicons'; /* Indica el tipo de íconos utilizados */
+  }
+  
+  /* Todo lo siguiente describe el botón x para cerrar el pop-up */
+  .closeIcon::before { /* el pseudónimo before indica que es contenido que se genera previo al elemento (en este caso, el elemento serían las notas cuando han sido guardadas) */
+    background: url("data:image/svg+xml,%3Csvg xmlns%3Adc='http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F' xmlns%3Acc='http%3A%2F%2Fcreativecommons.org%2Fns%23' xmlns%3Ardf='http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23' xmlns%3Asvg='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' xmlns='http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' xmlns%3Asodipodi='http%3A%2F%2Fsodipodi.sourceforge.net%2FDTD%2Fsodipodi-0.dtd' xmlns%3Ainkscape='http%3A%2F%2Fwww.inkscape.org%2Fnamespaces%2Finkscape' version='1.1' x='0px' y='0px' viewBox='0 0 100 125'%3E%3Cg transform='translate(0,-952.36218)'%3E%3Cpath style='text-indent:0;text-transform:none;direction:ltr;block-progression:tb;baseline-shift:baseline;color:%23000000;enable-background:accumulate;' d='m 17.069155,958.36232 a 2.0002,2.0002 0 0 0 -1.38518,0.58566 l -9.0982501,9.09825 a 2.0002,2.0002 0 0 0 0,2.82855 l 31.4938101,31.48152 -31.4938101,31.4938 a 2.0002,2.0002 0 0 0 0,2.8282 l 9.0982501,9.0982 a 2.0002,2.0002 0 0 0 2.82855,0 l 31.48154,-31.4938 31.4938,31.4938 a 2.0002,2.0002 0 0 0 2.82817,0 l 9.09824,-9.0982 a 2.0002,2.0002 0 0 0 0,-2.8282 l -31.49381,-31.4938 31.49381,-31.48152 a 2.0002,2.0002 0 0 0 0,-2.82855 l -9.09824,-9.09825 a 2.0002,2.0002 0 0 0 -2.82817,0 l -31.4938,31.4938 -31.48154,-31.4938 a 2.0002,2.0002 0 0 0 -1.44337,-0.58566 z' fill='%23000000' fill-opacity='1' fill-rule='evenodd' stroke='none' marker='none' visibility='visible' display='inline' overflow='visible'/%3E%3C/g%3E%3C/svg%3E");  /* Unicode sequence */
+    display: inline-block;
+    content: "";
+    background-size: contain;
+    margin-top: 10px;
+    margin-left: 7px;
+    padding-top: 1px;
+    width: 19px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+ /* Le da formato a el contenedor dentro del cual están todas las notas después de ser guardadas  */
+.wrapper{
+  margin: 50px;
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fill, 265px);
+}
+
+ /* Le da formato a cada nota individual después de ser guardada */
+.wrapper li{
+  height: 250px;
+  list-style: none;
+  border-radius: 5px; /* Redondea un poco los bordes, evita que sean cuadrados */
+  padding: 15px 20px 20px; /* Top, right and left, bottom */
+  background: #fff;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05); /* Crea la sombra pequeña alrededor de cada nota guardada. box-shadow: horizontal offset, vertical offset, blur radius */
+}
+
+ /* Permite que todo el contenido esté centrado y justificado*/
+.add-box, .icon, .popup, header {
+  display: flex; 
+  align-items: center;
+  justify-content: space-between;
+}
+
+ /* Permite que todo el contenido esté centrado y justificado*/
+.add-box{
+  cursor: pointer; /*Cambia el cursor normal por una manita para indicarle al usuario que puede interactuar con el*/
+  flex-direction: column; /*Permite que el contenido se almacene verticalmente, que el icono + este arriba del texto crear nota y no al lado */
+  justify-content: center;
+}
+
+/* Le da estilo al icono +*/
+.add-box .icon{
+  height: 78px;
+  width: 78px;
+  justify-content: center;
+}
+
+/* Le da estilo al texto "Crear nota" debajo del icono*/
+.add-box p{
+  color: #000000;
+  font-weight: 500; /*Grosor de la letra*/
+  margin-top: 20px;
+}
+
+/* Le da formato a cada nota individual despues de ser guardada */
+.note{
+  display: flex;
+  flex-direction: column; /* Indica que el contenido de las notas se almacena en columnas */
+  justify-content: space-between; /* Espacio uniformemente distribuido entre los elementos */
+}
+
+/* Los detalles incluyen todo el texto de la nota, excluyendo la fecha*/
+.note .details{
+  max-height: 165px;
+  overflow-y: auto; /* Incluye una barra de desplazamiento si el contenido supera su maximo*/
+}
+
+/* Incluye las dos barras de desplazamiento 1. adentro de details en el contenedor notes y 2. adentro de textarea en el contenedor pop-up*/
+.note .details::-webkit-scrollbar,
+.popup textarea::-webkit-scrollbar{
+  width: 0; 
+}
+/* Permite que la barra no sea visible al inicio, antes de llegar al limite maximo*/
+
+/* Cambia el ancho de las barras de desplazamiento cuando el usuario pasa su cursor sobre ellas*/
+.note .details:hover::-webkit-scrollbar,
+.popup textarea:hover::-webkit-scrollbar{
+  width: 5px;
+}
+
+/* Afecta la "pista" de la barra de desplazamiento, no la barra como tal*/
+.note .details:hover::-webkit-scrollbar-track,
+.popup textarea:hover::-webkit-scrollbar-track{
+  background: #f1f1f1;
+  border-radius: 25px;
+}
+
+/* Afecta la barra como tal*/
+.note .details:hover::-webkit-scrollbar-thumb,
+.popup textarea:hover::-webkit-scrollbar-thumb{
+  background: #e6e6e6;
+  border-radius: 25px;
+}
+
+/* Cambia el texto del titulo de la nota guardada, porque el input note.title es el unico elemento p descendiente del elemento note*/
+.note p{
+  font-size: 22px;
+  font-weight: 500;
+}
+
+/* Cambia el contenedor dentro del cual esta la fecha de creacion de la nota*/
+.note .bottom-content{
+  padding-top: 10px; /* Relleno de 10 pixeles arriba del texto*/
+  border-top: 1px solid #ccc; /*Agrega un borde superior de un pixel de grosor*/
+}
+
+/* Cambia el contenedor dentro del cual esta la fecha de creacion de la nota*/
+.settingsIcon:before{
+  background: url("data:image/svg+xml,%3Csvg xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg' xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink' version%3D'1.1' x%3D'0px' y%3D'0px' viewBox%3D'0 0 100 125' style%3D'enable-background%3Anew 0 0 100 100%3B' xml%3Aspace%3D'preserve'%3E%3Cpath d%3D'M49.5,44.6c-2.9,0-5.3,2.4-5.3,5.3c0,2.9,2.4,5.3,5.3,5.3c2.9,0,5.3-2.4,5.3-5.3C54.8,47,52.4,44.6,49.5,44.6z'%3E%3C/path%3E%3Cpath d%3D'M73.3,44.6c-2.9,0-5.3,2.4-5.3,5.3c0,2.9,2.4,5.3,5.3,5.3c2.9,0,5.3-2.4,5.3-5.3C78.6,47,76.2,44.6,73.3,44.6z'%3E%3C/path%3E%3Cpath d%3D'M25.8,44.6c-2.9,0-5.4,2.4-5.4,5.3c0,2.9,2.4,5.3,5.4,5.3c2.9,0,5.4-2.4,5.4-5.3C31.1,47,28.7,44.6,25.8,44.6z'%3E%3C/path%3E%3C/svg%3E") no-repeat;
+  background-size: contain;
+  display: inline-block;
+  content: "";
+  background-size: contain;
+  margin-bottom: 0px;
+  margin-left: 200px;
+  padding-top: 1px;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+}
+
+/*Permite que los ajustes se encuentren relativos al botón*/
+.bottom-content .settings{
+  position: relative;
+}
+
+/*Le da propiedades al botón de ajustes (...) en la página y permite controlar su comportamiento*/
+.settings .menu{
+  bottom: 0;
+  right: -5px;
+  padding: 5px 0;
+  /*Permite posicionar al botón en la parte inferior derecha */
+  background: #fff;
+  position: absolute;
+  /*Posiciona el menú en el contenedor */
+  border-radius: 4px;
+  /*Redondea un poco los bordes del menú*/
+  transform: scale(0); /*Permite que el menú se encuentre escondido hasta que el usuario de click en el botón*/
+  transform-origin: bottom right; /*Especifica la parte del contenedor donde se aplican las reglas de transformación, en este caso el elemento está en la parte inferior derecha*/
+  transition: transform 0.2s ease;
+  /*Permite que la transición sea suave, especifica que la transición es de tipo transformación y tardará .2 segundos en completarse*/
+  /*Ease es el tipo de transición, la cual empieza y termina lentamente, con una aceleración en la mitad.*/
+}
+
+/*Permite que el contenido del menú sea visible después de darle click al botón */
+.settings.show .menu{
+  transform: scale(1);
+}
+
+/* Le da estilo a los botones de editar y eliminar dentro del menú*/
+.settings .menu li{
+  height: 25px;
+  /*Controla la altura del menú*/
+  font-size: 16px;
+  /*Controla el tamaño de fuente de los textos editar y eliminar*/
+  margin-bottom: 2px;
+  padding: 17px 15px;
+  cursor: pointer;
+  z-index: 1;
+  /*Permite agrupar los elementos en un orden determinado, indica que será mostrado en la parte más inferior del elemento */
+  box-shadow: none;
+  border-radius: 0;
+  justify-content: flex-start;
+}
+
+/*El pop-up box es el contenedor que describe todo lo que se encuentra afuera del pop-up al momento de abrirlo*/
+.popup-box{
+  position: fixed; 
+  z-index: 2; /*Se va a agrupar debajo de los elementos con mayor índice*/
+  top: 0;
+  /*Evita que se recorra hacia abajo la pantalla*/
+  height: 100%;
+  width: 100%;
+  /*Permite que se expanda el contenido del pop-up al 100%*/
+  background: rgba(0,0,0,0.4);
+  /*Crea la pequeña sombra en el fondo al abrir el formulario*/
+}
+
+/*Describe todo el contenido dentro del formulario al abrir el pop-up, como el título, descripción e íconos*/
+.popup-box .popup{
+  position: absolute;
+  /*Evita que se mueva de lugar el formulario*/
+  top: 50%;
+  left: 50%;
+  /*Centra el contenedor del popup en el 50% de la altura y el 50% del ancho del contenedor principal*/
+  z-index: 3;
+  width: 100%;
+  max-width: 400px;
+   /*Permite que el contenido se expanda al 100% con un ancho máximo de 400 pixeles*/
+  justify-content: center;
+  transform: translate(-50%, -50%) scale(0.95);
+  /*Crea una pequeña transformación en la cual el pop-up disminuye su tamaño al cerrar el formulario y lo aumenta al abrirlo*/
+}
+
+
+.popup-box, .popup{
+  opacity: 0;
+  /*Hace que los elementos sean invisibles antes de darle click al pop-up */
+  pointer-events: none;
+  /* Evita interacciones no deseadas con elementos ocultos */
+  transition: all 0.25s ease;
+  /* Afecta el tipo de transición y tiempo en todas las transformaciones del contenedor */
+}
+
+/*Crea otra variable para los pop-ups cuando son visibles. */
+.popup-box.show, .popup-box.show .popup{
+  opacity: 1;
+  /*El cambio de opacidad de 0 a 1 permite que el contenido sea visible después de darle click. */
+  pointer-events: auto;
+  /*Restaura la interactividad del usuario con estos elementos */
+}
+
+.popup-box.show .popup{
+  transform: translate(-50%, -50%) scale(1);
+   /*Permite que sea visible el elemento y esté centrado */
+}
+
+
+/*Edita el contenido dentro del formulario */
+.popup .content{
+  border-radius: 5px;
+  background: #fff;
+  /*Permite que se expanda al 100% con un margen de 15 pixeles */
+  width: calc(100% - 15px);
+}
+
+.content header{
+  padding: 15px 25px;
+  border-bottom: 1px solid #ccc;
+}
+
+.content header p{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+
+/*Organiza el contenido del formulario, título y descrípcion */
+.content form{
+  margin: 15px 25px 35px;
+}
+
+/* Amplia el espacio donde se encuentra el boton crear */
+.content form .row{
+  margin-bottom: 20px;
+}
+
+/* Le da estilo a las etiquetas del formulario */
+form .row label{
+  font-size: 18px;
+  display: block;
+  margin-bottom: 6px;
+}
+
+
+/* Le da estilo a los cuadrados donde el usuario escribe las notas */
+/* Elementos tipo input y text tarea dentro de formularios */
+form :where(input, textarea){
+  height: 50px;
+  width: 100%;
+  /* Permiite que las cajas donde el usuario escribe las notas tomen el ancho de todo el contenedor*/
+  outline: none;
+  font-size: 17px;
+  padding: 0 15px;
+  border-radius: 4px;
+  /* Redondea un poco los bordes*/
+  border: 1px solid #999;
+}
+
+/* Afecta el apartado donde se ingresa la descripción de las tareas*/
+form .row textarea{
+  height: 150px;
+  resize: none;
+  padding: 8px 15px;
+}
+
+
+/* Afecta el botón crear dentro del formulario*/
+form button{
+  width: 100%;
+  height: 50px;
+  color: #fff;
+  /* Color de letra*/
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 17px;
+  border-radius: 4px;
+  background: #a98edf;
+  /* Color del botón*/
+}
+

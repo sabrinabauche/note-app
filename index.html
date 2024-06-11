@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr"><!--- Indica que el idioma es español y la dirección en la que se lee el texto -->
+  <head>
+    <meta charset="utf-8">  
+    <title>Mi proyecto Final Codeable</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Vincula el html con el código de estilos del css -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Lo hace adaptable a los dispositivos, con escala original de 1 -->
+
+  </head>
+  <body>
+    <div class="popup-box">
+      <div class="popup">
+        <!-- Configura el contenido inicial que vemos en la pantalla, declara el pop-up -->
+        
+        <div class="content">
+            <header>
+              <p></p><!-- Permite estructurar el contenido -->
+              <i class="uil closeIcon"> <!-- Declara el ícono con clase uil (tipo de letra) y subclase closeIcon-->
+                <!-- Incluyo el svg adentro del ícono porque quiero que se comporte como un ícono, de acuerdo a los estilos establecidos para su clase-->
+              </i>
+
+            </header>
+            <form id="newNote-form"> <!-- Se crea un formulario para los elementos título y descripción de la nota-->
+            <div class="row title"> <!-- Crea una división para el elemento título-->
+              <label name="row title">Título</label> 
+              <input 
+              type="text" 
+              placeholder="Introduce el título">
+            </div>
+            <!-- Toda la división describe el elemento donde el usuario ingresa el título de la nota-->
+      
+             <!-- Se crea una división para el elemento descripción-->
+            <div class="row description">
+              <label name="row description">Descripción</label>
+              <textarea placeholder="Comentarios..."></textarea>
+              <!-- Se utiliza texttarea porque el contenido es de múltiples lineas-->
+            </div>
+            <button></button>
+            <!-- El estilo del botón se declara en el archivo css-->
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper"> <!-- Creo la división wrapper para darle estilo a las notas después de ser guardadas-->
+      <li class="add-box"> <!-- Se crea como elemento lista porque representa una nota de la lista de notas guardadas y para facilitar darle formato en css-->
+    <!-- El ícono para añadir una nota, archivo tipo svg. Obtenido de The Noun Project -->
+    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="70" height="60" viewBox="0 0 50 50">
+      <path d="M 25 2 C 12.264481 2 2 12.264481 2 25 C 2 37.735519 12.264481 48 25 48 C 37.735519 48 48 37.735519 48 25 C 48 12.264481 37.735519 2 25 2 z M 25 4 C 36.664481 4 46 13.335519 46 25 C 46 36.664481 36.664481 46 25 46 C 13.335519 46 4 36.664481 4 25 C 4 13.335519 13.335519 4 25 4 z M 24 13 L 24 24 L 13 24 L 13 26 L 24 26 L 24 37 L 26 37 L 26 26 L 37 26 L 37 24 L 26 24 L 26 13 L 24 13 z"></path>
+  </svg>
+        <p>Crear nota</p>
+      </li>
+    </div>
+
+    <script src="script.js"></script>
+    <!-- Vincula la página html con javascript -->
+    
+  </body>
+</html>
